@@ -1,0 +1,4 @@
+name: MAPI
+version: '${project.version}'
+main: more.mucho.mapi.MAPI
+api-version: '1.19'
