@@ -2,20 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>more.mucho</groupId>
-  <artifactId>mapi</artifactId>
-  <version>1</version>
-  <packaging>pom</packaging>
+    <parent>
+        <groupId>more.mucho</groupId>
+        <artifactId>mapi</artifactId>
+        <version>1</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
 
-  <name>MAPI</name>
-    <modules>
-        <module>modules/core</module>
-        <module>modules/V1_19_2</module>
-        <module>modules/V1_20_4</module>
-        <module>modules/api</module>
-    </modules>
+    <artifactId>core</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Core</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -23,7 +22,6 @@
     </properties>
 
     <build>
-        <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -61,14 +59,21 @@
 
     <repositories>
         <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/TomTeDev/MAPI</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
     </repositories>
+
     <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>
