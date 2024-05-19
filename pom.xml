@@ -6,34 +6,33 @@
 
   <groupId>more.mucho</groupId>
   <artifactId>mapi</artifactId>
-  <version>1</version>
+  <version>1.0</version>
   <packaging>pom</packaging>
 
   <name>MAPI</name>
     <modules>
-        <module>modules/core</module>
-        <module>modules/V1_19_2</module>
-        <module>modules/V1_20_4</module>
-        <module>modules/api</module>
-    </modules>
+        <module>core</module>
+        <module>V1_19_2</module>
+        <module>api</module>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+       <!-- <module>V1_20_4</module>-->
+      <!--  <module>modules/V1_20_4</module>-->
+
+    </modules>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub TomTeDev Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/TomTeDev/mapi</url>
+        </repository>
+    </distributionManagement>
+
+
+
+
 
     <build>
-        <defaultGoal>clean package</defaultGoal>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -50,25 +49,26 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <appendAssemblyId>true</appendAssemblyId>
+                </configuration>
+                <executions>
+           <!--         <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>-->
+                </executions>
+            </plugin>
 
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/TomTeDev/MAPI</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-    <dependencies>
-    </dependencies>
+        </plugins>
+    </build>
 </project>
