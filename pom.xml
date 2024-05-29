@@ -13,12 +13,14 @@
     <modules>
         <module>core</module>
         <module>V1_19_2</module>
+        <module>V1_20_4</module>
         <module>api</module>
 
        <!-- <module>V1_20_4</module>-->
       <!--  <module>modules/V1_20_4</module>-->
 
     </modules>
+
     <distributionManagement>
         <repository>
             <id>github</id>
@@ -26,7 +28,6 @@
             <url>https://maven.pkg.github.com/TomTeDev/mapi</url>
         </repository>
     </distributionManagement>
-
 
 
 
@@ -49,25 +50,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <appendAssemblyId>true</appendAssemblyId>
-                </configuration>
-                <executions>
-           <!--         <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>-->
-                </executions>
-            </plugin>
+
 
         </plugins>
     </build>
